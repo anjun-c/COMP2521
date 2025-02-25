@@ -1,0 +1,59 @@
+#!/bin/bash
+
+fn_name="maxDegreeDiff"
+prog_name="testMaxDegreeDiff"
+
+set -o pipefail
+
+cd "$(dirname "$0")"
+
+echo "** Testing $fn_name"
+
+make
+
+if [ $? -ne 0 ]
+then
+	echo "compilation error: tests could not be run"
+	exit 1
+fi
+
+for tin in tests/*.in
+do
+	t="$(basename "$tin" .in)"
+
+	echo "------------------------------------"
+	echo "** Test $t (./$prog_name < tests/$t.in)"
+	echo "------------------------------------"
+
+	"./$prog_name" < "tests/$t.in" | head -200 > "tests/$t.out" 
+
+	if [ $? -ne 0 ]
+	then
+		echo
+		echo "** Test failed (runtime error)"
+		echo
+	elif [ ! -f "tests/$t.exp" ]
+	then
+		echo "** Expected output not available"
+		echo "** Check your output manually in tests/$t.out"
+	elif cmp -s "tests/$t.exp" "tests/$t.out"
+	then
+		echo "** Test passed"
+	else
+		echo "** Test failed (incorrect output)"
+		echo
+		echo "** Expected output (in tests/$t.exp):"
+		cat "tests/$t.exp"
+		echo
+		echo "** Your output (in tests/$t.out):"
+		if [ -s "tests/$t.out" ]
+		then
+			cat "tests/$t.out"
+		else
+			echo "(empty)"
+		fi
+		echo
+	fi
+done
+
+echo

@@ -1,0 +1,30 @@
+#!/bin/sh
+
+N=5 # number of times a test is repeated (to get an average)
+
+# TIP: You can edit the list of input sizes below
+for size in 10000 20000 40000 80000 16000 #500000 1000000 2000000 4000000 8000000 16000000 32000000 64000000
+do
+	# TIP: You can edit the list of input types below
+	#      For example, you could remove 'random' if you don't want to
+	#      time with random input
+	for order in random sorted reversed
+	do
+		echo === Testing for $order input, size $size ===
+		for i in $(seq $N)
+		do
+			case $order in
+				random)   flag="R" ;;
+				sorted)   flag="A" ;;
+				reversed) flag="D" ;;
+			esac
+			{ ./gen $size $flag | /usr/bin/time -f "%U" ./sortA > /dev/null ; }
+			#echo -n "firstlastswap"
+			#{ cat firstlastswap3 | /usr/bin/time -f "%U" ./sortA > /dev/null ; }
+
+			#                          TIP: replace this ^ with ./sortA or ./sortB
+		done
+		echo ""
+	done
+done
+

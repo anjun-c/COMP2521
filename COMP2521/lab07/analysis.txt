@@ -1,0 +1,42 @@
+
+NOTE:
+- Your time complexities should be expressed in big-O notation and be in
+  terms of n, where n is the number of cells in the maze.
+
+============
+  solveBfs
+============
+
+- Worst case time complexity: O(n)
+
+- Explanation: 
+
+The worst-case time complexity of the DFS algorithm is O(n). 
+This is because in the worst case, each cell in the maze is visited exactly once. 
+Initializing the visited and predecessor arrays takes O(n) time. 
+The DFS loop processes each cell by pushing and popping it from the stack once (O(1) operations),
+ and checking its neighbors involves a constant amount of work. 
+Thus, the overall complexity is O(n).
+
+making visited & predecessor arrays are less than O(n)
+  - they calloc only for no. cols
+queue operations are O(1)
+in the worst case, the exit would be the last to be checked
+visited cells are marked and not revisited
+therefore, each cell in the maze is visited once
+thus worst case time complexity is O(n)
+
+============
+  solveDfs
+============
+
+- Worst case time complexity: O(n)
+
+- Explanation: 
+
+visited & predecessor arrays < O(n)
+stack ops. are O(1)
+worst case -> exit is last checked
+visited cells are not revisited
+therefore each cell in maze is visited exactly once
+worst case time is O(n)

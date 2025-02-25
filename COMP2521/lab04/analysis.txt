@@ -1,0 +1,58 @@
+
+NOTE:
+- Your time complexities should be expressed in big-O notation and be in
+  terms of either:
+  - n, where n is the number of nodes in the tree, or
+  - h, where h is the height of the tree
+
+=================
+  bstNumLeaves
+=================
+
+- Worst case time complexity: O(n)
+
+- Explanation: 
+
+in the function, it must visit every node in order to determine that it does not have any children. 
+Therefore, the time complexity is linear as each node is checked once. 
+
+=================
+    bstRange
+=================
+
+- Worst case time complexity: O(h)
+
+- Explanation: 
+
+in the function, it goes as far left and right as possible to find the min and max respectively
+so in the worst case, the min value would be all the way to the left and the max value would be all the way to the right
+therefore, the worst time complexity is the height of the bst. 
+
+=================
+ bstDeleteLeaves
+=================
+
+- Worst case time complexity: O(n)
+
+- Explanation: 
+
+within the binary tree, it must check every node to determine that it does not have any children. 
+therefore, similarly with bstNumLeaves, it is also linear as each node is checked once.
+
+=================
+  bstLevelOrder
+=================
+
+- Worst case time complexity: O(n)
+
+- Explanation: 
+
+once again, the worst case time complexity is linear
+this is because the function processes every node once:
+e.g.
+processes level 1
+then goes to child nodes
+processes each child node and checks for further child nodes
+repeat this process for every node
+
+

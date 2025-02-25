@@ -1,0 +1,52 @@
+
+NOTE:
+- Your time complexities should be expressed in big-O notation and be in
+  terms of n, where n is the number of people who  have  been  added  to
+  Friendbook.
+
+===============
+   FbFriend
+===============
+
+- Worst case time complexity: O(n)
+
+- Explanation: finding the nametoid is logn because it is a binary search
+linear search of O(n) for checking adjacency list and for inserting node
+worst case traverses the entire list which is O(n)
+O(n) dominates logn so worst case is O(n)
+
+===============
+ FbNumFriends
+===============
+
+- Worst case time complexity: O(n)
+
+- Explanation: mapget is logn again
+counting the friends you iterate through the list -> check every item
+therefore for n items worst case is O(n) -> O(n) dominates logn term
+
+===============
+FbMutualFriends
+===============
+
+- Worst case time complexity: O(n)
+
+- Explanation: mapget is logn again
+youre iterating through the adjacency lists of name1 and name2
+therefore this is another O(n) worst case as you go through n items of each list
+
+===============
+ FbFriendRecs1
+===============
+
+- Worst case time complexity: O(n^2)
+
+- Explanation: this is because you have two loops
+one loop which iterates through friends and another through friends of friends
+qsort has nlogn
+mapget is logn
+mutualfriends is already O(n)
+fbisfriends is already O(n)
+
+therefore dominating term is O(n^2)
+
